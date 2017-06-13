@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Transportes
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="createViaje()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor='let viaje of viajes | async'>
+      <ion-item>
+       <ion-label>{{ viaje.title }}</ion-label>
+        <ion-checkbox (ionChange)="updateViaje(viaje)" [checked]="viaje.done"></ion-checkbox>
+      </ion-item>
+       <ion-item-options> 
+        <button ion-button color="danger" (click)="removeViaje(viaje)">
+          Delete
+        </button>
+       </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
